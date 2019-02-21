@@ -91,7 +91,7 @@ class RecentPostsPlugin extends Plugin {
         if (isset($filters['page']) && count($filters['page']) > 0) {
             $relevant_pages = new Collection();
             foreach ($filters['page'] as $p) {
-                $children = $this->grav['pages']->find($p)->children();
+                $children = $this->grav['pages']->find($p)->children()->published()->visible();
                 $relevant_pages->append($children);
             }
             unset($filters['page']);
